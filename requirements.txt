@@ -3,4 +3,4 @@ uvicorn[standard]
 pydantic
 pytest
 httpx
-
+mangum
