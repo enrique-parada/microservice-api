@@ -1,6 +1,7 @@
 import string
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from mangum import Mangum
 
 from . import config
@@ -16,6 +17,14 @@ app = FastAPI(
     title=config.SERVICE_NAME,
     version=config.VERSION,
     description="API sencilla para análisis de texto y passwords para la prueba DevOps",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],          
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
