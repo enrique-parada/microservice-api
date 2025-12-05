@@ -1,6 +1,7 @@
 import string
 
 from fastapi import FastAPI
+from mangum import Mangum
 
 from . import config
 from .models import (
@@ -77,4 +78,6 @@ def analyze_password(payload: AnalyzePasswordRequest):
         has_uppercase=has_uppercase,
         has_special_chars=has_special_chars,
     )
+
+handler = Mangum(app)
 
